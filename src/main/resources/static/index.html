@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>테스트</title>
+</head>
+<body>
+    <form method="get" action="/greeting">
+        <input type="text" name="say" placeholder="인사말">
+        <input type="text" name="to" placeholder="이름">
+        <button>제출</button>
+    </form>
+    <div>
+        <input type="text" id="say" placeholder="인사말">
+        <input type="text" id="to" placeholder="이름">
+        <button onclick="send()">제출</button>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        function send() {
+            let say = document.getElementById("say").value;
+            let to = document.getElementById("to").value;
+            
+            let dest = `http://${location.host}/greeting1`;
+            
+            if (say != null && say != "") {
+                dest += `/${say}`;
+            }
+            else {
+                dest += `/hello`;
+            }
+            
+            if (sayAdded && to != null && to != "") {
+                dest += `/${to}`;
+            }
+            
+            location.href = dest;
+        }
+    </script>
+</body>
+</html>
